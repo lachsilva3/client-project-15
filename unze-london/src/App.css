@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+/* Custom Buttons on home page */
+
+@media screen and (max-width: 767px){
+.custom-btn {
+    width: 100%;
+    font-size: 12px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+}
+.custom-btn-group {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  width: 90%;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 0 auto;
+ 
+}
+.custom-btn {
+  background: #000000;
+  text-decoration: none;
+  border: 2px solid #000000;
+  padding: 10px 20px;
+  color: #ffffff;
+  border-radius: 0px;
+  font-weight: bold;
+  width: 30%;
+  text-align: center;
+  margin-top: 10px;
+}
+/* custom search bar */
+.custom-search {
+  background-color: #f8f9fa;
+  border-top:none;
+  border-left: none;
+  border-right: none;
+  border-radius: none;
+}
+.custom-search:hover {
+  border-top:none;
+  border-left: none;
+  border-right: none;
+}
+/* active nav-item */
+.cus-nav-link{
+  color: red;
+  text-decoration: none;
+  
+}
+
+/* center content */
+.center-content{
+  max-width: 500px;
+  margin: auto;
+  margin-top: 5%;
+}
+
+
+/* left side bar button css */
+.leftsidebarbutton{
+  padding: 10px;
+  background-color: transparent;
+  width: 33%;
+  border: 0.5px solid gray;
+}
+.leftsidebarbutton:hover{
+  background-color: #000000;
+  color: white;
+}
