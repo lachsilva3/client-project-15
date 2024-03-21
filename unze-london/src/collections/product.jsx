@@ -22,15 +22,15 @@ export const Product = (props) => {
         Add To Cart {cartItemCount > 0 && <> ({cartItemCount})</>}
       </button>
       <br></br>
-      <a onClick={() => addToWish(id)}>
+      <a onClick={() => addToWish(id) }>
        {/* icon */}
    <FontAwesomeIcon
                       icon={faHeart}
                       color="black"
                      style={{marginBottom:'10px'}}
                       size="xl"
-                      onMouseOver={({target})=>target.style.color="red"}
-                      onMouseOut={({target})=>target.style.color="black"}
+                      onClick={({target})=>target.style.color="red"}
+                      
                     
                     />
       </a>
