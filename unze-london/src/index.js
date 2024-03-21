@@ -32,19 +32,18 @@ import Orderstatuscheck from './routes/orderstatuscheck';
 import Returnsupport from './routes/returnsupport';
 import Wishlistpage from './routes/wishlistpage';
 import Admin from './routes/admin'; 
-// pages
+
+// pages (includes)
 import Cart from "./pages/cart/cart";
 import Wishlist from "./pages/wishlist/wishlist";
 import AddProducts from "./pages/addproducts/addproducts"  ;
 import ManageProducts from "./pages/manageproducts/manageproducts"  ;
-
 import Womenstable from "./pages/womenstable/womenstable";
 import Menstable from "./pages/menstable/menstable";
 import Kidstable from "./pages/kidstable/kidstable";
 import Womenatable from "./pages/womenatable/womenatable";
 import Menatable from "./pages/menatable/menatable";
 import Kidatable from "./pages/kidatable/kidatable";
-
 
 // collections
 import Womenshoes from './collections/womenshoes';
