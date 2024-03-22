@@ -71,9 +71,9 @@ export default function Kidatable() {
 
   return (
     <div>
-      <h1>Table of kids apparel</h1>
-      <button onClick={handleAddProductClick} style={{background:'black', color:'white'}}>Add Product</button>
-      <br /><br />
+   <center><h1>Kids Apparel</h1></center>
+      {/* <button onClick={handleAddProductClick} style={{background:'black', color:'white'}}>Add Product</button> */}
+    
       <TableCss>
         <div>
           {!showForm ? (

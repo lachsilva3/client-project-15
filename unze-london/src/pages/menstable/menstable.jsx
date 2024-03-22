@@ -71,9 +71,9 @@ export default function Mensable() {
 
   return (
     <div>
-      <h1>Table of Men shoes</h1>
-      <button onClick={handleAddProductClick} style={{background:'black', color:'white'}}>Add Product</button>
-      <br /><br />
+  <center><h1>Men's Shoes</h1></center>
+      {/* <button onClick={handleAddProductClick} style={{background:'black', color:'white'}}>Add Product</button> */}
+      
       <TableCss>
         <div>
           {!showForm ? (

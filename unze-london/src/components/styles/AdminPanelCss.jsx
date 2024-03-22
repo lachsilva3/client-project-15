@@ -25,8 +25,6 @@ const AdminPanelCss =styled.div`
 }
 .right-half {
   width: 100%;
-  height: 77vh;
-
   padding: 20px;
 }
 
@@ -34,9 +32,6 @@ const AdminPanelCss =styled.div`
   background-color: #f0f0f0; /* Left half background color */
 }
 
-.right-half {
-  background-color: #eaeaea; /* Right half background color */
-}
 .abutton{
   width: 100%;
   border:1px solid #eaeaea;

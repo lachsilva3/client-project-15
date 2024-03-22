@@ -16,17 +16,18 @@ const  TableCss =styled.div`
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    border: 1px solid black;
+    border: 2px solid black;
+    text-align: center;
   }
   th, td {
-    padding: 8px;
-    text-align: left;
-    border-right: 1px solid ;
+    padding: 5px;
+    text-align: center;
+    border-right: 1px solid black ;
   }
   th {
     background-color: black;
     color: white;
+    border-right: 1px solid white ;
   }
   button {
     padding: 5px 10px;
@@ -34,16 +35,23 @@ table {
     cursor: pointer;
    
   }
-  
   .edit {
-    border: 2px solid black;
-    background-color: green;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+  }
+  .edit:hover{
+    background-color: black;
     color: white;
   }
   .delete {
-    margin-left: 7rem;
-    border: 2px solid black;
-    background-color: red;
+    margin-left: 2px;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+  }
+  .delete:hover{
+    background-color: black;
     color: white;
   }
 

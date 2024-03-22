@@ -71,9 +71,9 @@ export default function Menatable() {
 
   return (
     <div>
-      <h1>Table of men apparel</h1>
-      <button onClick={handleAddProductClick} style={{background:'black', color:'white'}}>Add Product</button>
-      <br /><br />
+      <center><h1>Men's Apparel</h1></center>
+      {/* <button onClick={handleAddProductClick} style={{background:'black', color:'white'}}>Add Product</button> */}
+   
       <TableCss>
         <div>
           {!showForm ? (
