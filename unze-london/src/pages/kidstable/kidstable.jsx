@@ -69,6 +69,20 @@ export default function Kidstable() {
     });
   };
 
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({
+          ...formData,
+          image: reader.result 
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div>
  <center><h1>Kids Shoes</h1></center>
@@ -85,7 +99,7 @@ export default function Kidstable() {
                   <th>Name</th>
                   <th>Price</th>
                   <th>Style</th>
-                  
+                  <th>Image</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -97,7 +111,7 @@ export default function Kidstable() {
                     <td>{item.name}</td>
                     <td>{item.price}</td>
                     <td>{item.style}</td>
-                    
+                    <td style={{ textAlign:'center' }}><img src={item.image} alt="Product Image" style={{ width: '80px'}} /></td>
                     <td>
                       <button className="edit" onClick={() => handleEditClick(index)}>Edit</button>
                       <button className="delete" onClick={() => handleDeleteClick(index)}>Delete</button>
@@ -118,6 +132,10 @@ export default function Kidstable() {
               <input type="text" id="price" name="price" style={{marginLeft:'50px'}} value={formData.price} onChange={handleChange} /><br /><br />
               <label htmlFor="style">Style :</label>
               <input type="text" id="style" name="style" style={{marginLeft:'50px'}} value={formData.style} onChange={handleChange} /><br /><br />
+              <label htmlFor="image">Image :</label>
+              <input type="file" id="image" name="image" accept="image/*" style={{marginLeft:'40px' }} onChange={handleImageUpload} /><br /><br />
+              {formData.image && <img src={formData.image} alt="Preview" style={{ width: '100px'}} />} 
+              <br /><br />
               <button type="submit" className="submit">Submit</button>
             </form>
           )}
