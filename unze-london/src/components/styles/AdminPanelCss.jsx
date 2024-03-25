@@ -21,16 +21,13 @@ const AdminPanelCss =styled.div`
 
 .left-half{
   width: 100%;
- display: flex;
+ background-color: #f0f0f0; /* Left half background color */
 }
 .right-half {
   width: 100%;
   padding: 20px;
 }
 
-.left-half {
-  background-color: #f0f0f0; /* Left half background color */
-}
 
 .abutton{
   width: 100%;

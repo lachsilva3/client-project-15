@@ -36,7 +36,6 @@ import Admin from './routes/admin';
 // pages (includes)
 import Cart from "./pages/cart/cart";
 import Wishlist from "./pages/wishlist/wishlist";
-import AddProducts from "./pages/addproducts/addproducts"  ;
 import ManageProducts from "./pages/manageproducts/manageproducts"  ;
 import Womenstable from "./pages/womenstable/womenstable";
 import Menstable from "./pages/menstable/menstable";
@@ -154,9 +153,6 @@ element: <Kidapparel />
 },
 {path:"admin",
 element: <Admin />
-},
-{path:"addproducts",
-element: <AddProducts />
 },
 {path:"manageproducts",
 element: <ManageProducts />

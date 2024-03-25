@@ -15,8 +15,6 @@ export default function Manageproducts() {
   };
   return (
     <div>
-        <h5 style={{textAlign:'center',margin:'0px',
-        fontSize:'23.4px',marginBottom:'5px'}}><b>Manage Products</b></h5>
         
 <AdminPanelCss>
         <div className="button-container">
