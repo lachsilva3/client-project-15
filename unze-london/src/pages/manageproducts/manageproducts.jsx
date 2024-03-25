@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
 import { TableCss } from "../../components/styles/TableCss";
 import { PRODUCTS } from '../../db/products'; 
+import { faFileZipper } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from 'react';
 
 export default function Productstable() {
   const [showForm, setShowForm] = useState(false);
@@ -13,7 +14,7 @@ export default function Productstable() {
     style: ''
   });
   const [editIndex, setEditIndex] = useState(null);
-  const [products, setProducts] = useState(PRODUCTS);
+
 
   const handleAddProductClick = () => {
     setShowForm(true);
@@ -73,12 +74,45 @@ export default function Productstable() {
       reader.readAsDataURL(file);
     }
   };
+// test
+const [products, setProducts] = useState([]);
+const [selectedCategory, setSelectedCategory] = useState('');
+useEffect(() => {
+  // Load products data
+  setProducts(PRODUCTS);
+   // Initially, show all products
+}, []);
+const handleFilterChange = (category) => {
+  setSelectedCategory(category);
+  if (category === '') {
+    // Show all products if no category is selected
+    setProducts(PRODUCTS);
+  } else {
+    // Filter products based on selected category
+    const filtered = PRODUCTS.filter(product => product.category === category);
+    setProducts(filtered);
+  }
+};
+
+
+
 
   return (
     <div>
       <button className='btn' onClick={handleAddProductClick} style={{ background: 'black', color: 'white' }}><b>Add Product</b></button>
-      <br /><br />
+ 
+      <select value={selectedCategory} onChange={(e) => handleFilterChange(e.target.value)}>
+        <option value="">All</option>
+        <option value="Women shoes">Women shoes</option>
+        <option value="Men shoes">Men shoes</option>
+        <option value="Kids shoes">Kids shoes</option>
+        <option value="Women apparels">Women apparels	</option>
+        <option value="Men apparels">Men apparels</option>
+        <option value="Kids apparels">Kids apparels</option>
+      </select>
+     
       <TableCss>
+        <br></br>
         <div>
           {!showForm ? (
             <table>
@@ -94,14 +128,14 @@ export default function Productstable() {
                 </tr>
               </thead>
               <tbody>
-                {products.map((item, index) => (
+                {products.map((product, index) => (
                   <tr key={index}>
-                    <td>{item.id}</td>
-                    <td>{item.productName}</td> 
-                    <td>{item.price}</td>
-                    <td>{item.category}</td>
-                    <td>{item.style}</td>
-                    <td><img src={item.productImage} alt="Product" style={{ width: '50px' }} /></td> 
+                    <td>{product.id}</td>
+                    <td>{product.productName}</td> 
+                    <td>{product.price}</td>
+                    <td>{product.category}</td>
+                    <td>{product.style}</td>
+                    <td><img src={product.productImage} alt="Product" style={{ width: '50px' }} /></td> 
                     <td>
                       <button className="edit" onClick={() => handleEditClick(index)}>Edit</button>
                       <button className="delete" onClick={() => handleDeleteClick(index)}>Delete</button>
