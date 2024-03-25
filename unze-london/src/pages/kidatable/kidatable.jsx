@@ -8,7 +8,7 @@ export default function Kidatable() {
     id: '',
     name: '',
     price: '',
-    style: '',
+    catagory: '',
     
   });
   const [tableData, setTableData] = useState([
@@ -17,7 +17,7 @@ export default function Kidatable() {
       id: 'L38796',
       name: 'ANONA',
       price: 'PKR 3999',
-      style: 'Style A',
+      catagory: 'women shoes',
       
     }
   ]);
@@ -30,7 +30,7 @@ export default function Kidatable() {
       id: '',
       name: '',
       price: '',
-      style: '',
+      catagory: '',
       
     });
     setEditIndex(null);
@@ -86,7 +86,7 @@ export default function Kidatable() {
   return (
     <div>
    <center><h1>Kids Apparel</h1></center>
-      {/* <button onClick={handleAddProductClick} style={{background:'black', color:'white'}}>Add Product</button> */}
+       <button onClick={handleAddProductClick} style={{background:'black', color:'white'}}>Add Product</button> 
     
       <TableCss>
         <div>
@@ -98,7 +98,7 @@ export default function Kidatable() {
                   <th>ID</th>
                   <th>Name</th>
                   <th>Price</th>
-                  <th>Style</th>
+                  <th>Catagory</th>
                   <th>Image</th>
                   <th>Actions</th>
                 </tr>
@@ -110,7 +110,7 @@ export default function Kidatable() {
                     <td>{item.id}</td>
                     <td>{item.name}</td>
                     <td>{item.price}</td>
-                    <td>{item.style}</td>
+                    <td>{item.catagory}</td>
                     <td style={{ textAlign:'center' }}><img src={item.image} alt="Product Image" style={{ width: '80px'}} /></td>
                     <td>
                       <button className="edit" onClick={() => handleEditClick(index)}>Edit</button>
@@ -130,9 +130,15 @@ export default function Kidatable() {
               <input type="text" id="name" name="name" style={{marginLeft:'40px'}} value={formData.name} onChange={handleChange} /><br /><br />
               <label htmlFor="price">Price :</label>
               <input type="text" id="price" name="price" style={{marginLeft:'50px'}} value={formData.price} onChange={handleChange} /><br /><br />
-              <label htmlFor="style">Style :</label>
-              <input type="text" id="style" name="style" style={{marginLeft:'50px'}} value={formData.style} onChange={handleChange} /><br /><br />
-              <label htmlFor="image">Image :</label>
+              <label >Category:</label><br></br>
+  <select name="category" id="category">
+    <option value="Women shoes">Women shoes</option>
+    <option value="Men shoes">Men shoes</option>
+    <option value="Kids shoes">Kids shoes</option>
+    <option value="Women apparels">Women apparels</option>
+    <option value="Men apparels">Men apparels</option>
+    <option value="Kids apparels">Kids apparels</option>
+  </select><label htmlFor="image">Image :</label>
               <input type="file" id="image" name="image" accept="image/*" style={{marginLeft:'40px' }} onChange={handleImageUpload} /><br /><br />
               {formData.image && <img src={formData.image} alt="Preview" style={{ width: '100px'}} />} 
               <br /><br />

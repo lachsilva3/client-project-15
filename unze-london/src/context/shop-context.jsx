@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { PRODUCTS } from "../db/products";
-
+// import { Productstable } from "../manageproducts/manageproducts"
 export const ShopContext = createContext(
 null
 );
