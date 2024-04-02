@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
-import { PRODUCTS } from "../db/products";
+import { db } from "../../src/firebase";
 import { Product } from "./product";
+import { addDoc, collection, getDocs, deleteDoc, doc, updateDoc, query, where } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { ShopCss } from '../components/styles/ShopCss';
 
-const womenapparel= () => {
-  const womenApparel = PRODUCTS.filter(item => item.category === 'Women apparels');
+export default function WomenApparel() {
+  const [products, setProducts] = useState([]);
+  const productsCollection = collection(db, "products");
+  //GET/ FETCH products
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getDocs(productsCollection);
+      setProducts(data.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    };
+    getData();
+  }, []);
+  const womenApparel = products.filter(item => item.category === 'Women apparels');
+  
   return (
     <div>  <center>
     <h3 style={{backgroundColor:'black', 
@@ -30,5 +43,4 @@ const womenapparel= () => {
   )
 }
 
-export default womenapparel;
 

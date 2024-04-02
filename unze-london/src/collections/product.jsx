@@ -1,20 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { ShopContext } from "../context/shop-context";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 export const Product = (props) => {
-  const { id, productName, price, productImage,style } = props.data;
+  const { id,Name,price,image,style } = props.data;
   const { addToCart, cartItems, addToWish } = useContext(ShopContext);
 
   const cartItemCount = cartItems[id];
 
   return (
     <div className="product">
-      <img src={productImage} />
+      <img src={image} />
       <div className="description">
         <p style={{marginBottom:"0px"}}>
-          <b>{productName}</b>
+          <b>{Name}</b>
         </p>
         <p style={{marginBottom:"0px"}}>{style}</p>
         <p> PKR {price}</p>

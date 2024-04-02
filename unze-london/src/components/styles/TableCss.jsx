@@ -61,7 +61,16 @@ table {
   color: white;
 }
 
+p{
+  display: inline-block;
+  color: black;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin-left: 10px;
+}
 
-
+input{   
+  margin:10px 5px;
+}
   `
     export {  TableCss };
