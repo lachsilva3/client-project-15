@@ -19,18 +19,7 @@ function Product ({product,onAddToCart})  {
         Add To Cart
       </button>
       <br></br>
-      <a>
-       {/* icon */}
-   <FontAwesomeIcon
-                      icon={faHeart}
-                      color="black"
-                     style={{marginBottom:'10px'}}
-                      size="xl"
-                      onClick={({target})=>target.style.color="red"}
-                      
-                    
-                    />
-      </a>
+
       </div>
      
     </div>
