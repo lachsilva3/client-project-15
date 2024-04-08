@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { RightSideBarCss } from './styles/RightSideBarCss';
 import Cart from '../pages/cart/cart';
+import { ShopContext } from '../context/shop-context';
 
 
 const SideBar = ({ isOpen, onClose }) => {
-    
+    const {cart}=useContext(ShopContext)
   return (
     <RightSideBarCss>
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
@@ -15,9 +16,8 @@ const SideBar = ({ isOpen, onClose }) => {
                         X
                         
                         </button>
-                  
                         </div>
-     <Cart />
+                        <Cart cart={cart} />
     </div>
     </RightSideBarCss>
   );

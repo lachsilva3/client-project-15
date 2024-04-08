@@ -1,65 +1,27 @@
-import React, { useContext } from "react";
-import { ShopContext } from "../../context/shop-context";
-import { PRODUCTS } from "../../db/products";
-import { CartItem } from "./cart-item";
-import { useNavigate } from "react-router-dom";
-import { CssCart } from "../../components/styles/CssCart";
-import Footer from "../../components/Footer";
-import backgroundImage from '../../assets/emptycart.png';
+import React from 'react';
 
-export const Cart = () => {
-  const imageStyle = {
-    width: '30%', 
-    height: 'auto', 
-  };
-  const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
-  const totalAmount = getTotalCartAmount();
-
-  const navigate = useNavigate();
-
+function Cart({ cart }) {
   return (
-   <div>
-    
-    <CssCart>
-   
-      <div className="cart">
-        {PRODUCTS.map((product) => {
-          if (cartItems[product.id] !== 0) {
-            return <CartItem data={product} />;
-          }
-        })}
-      </div>
-
-      {totalAmount > 0 ? (
-        <div className="checkout">
-          <center>
-          <p> Total: PKR {totalAmount} </p>
-          <button onClick={() => navigate("/")} style={{fontSize:'15px'}}> <b>Continue Shopping</b> </button>
-          <button
-          style={{fontSize:'15px'}}
-            onClick={() => {
-              checkout();
-              navigate("/checkout");
-            }}
-          >
-            {" "}
-            <b>Checkout</b>{" "}
-          </button>
-          </center>
-        </div>
-      ) : (
-        <div>
-          <br></br> <br></br>
-          <center>
-          <img src={backgroundImage} alt="Background" style={imageStyle} />
-      
-        <h3> Your Cart is Empty</h3>
-        </center>
-        </div>
-      )}
-      
-    </CssCart>
+    <div>
+      <ul>
+        {cart.map((item, index) => (
+          
+          <li key={index} style={{fontSize:'15px',
+          border:'1px solid grey',borderRadius:'5px',
+          marginTop:'10px',height:'150px'
+          }}>
+            <img style={{width:'100px',height:'auto',
+            float:'left',borderRadius:'6px'}} src={item.image} />
+            <br></br>
+          {item.Name} 
+          <br></br>
+          PKR-{item.price}
+          </li>
+        ))}
+       
+      </ul>
     </div>
   );
-};
- export default Cart;
+}
+
+export default Cart;

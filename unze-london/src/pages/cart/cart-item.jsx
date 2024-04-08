@@ -4,16 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 export const CartItem = (props) => {
-  const { id, productName, price, productImage, style } = props.data;
+  const { id, Name, price, image, style } = props.data;
   const { cartItems, addToCart, removeFromCart, deleteFromCart,updateCartItemCount} =
     useContext(ShopContext);
 
   return (
     <div className="cartItem">
-      <img style={{maxWidth:'100%',height:'auto',verticalAlign:'middle'}} src={productImage} />
+      <img style={{maxWidth:'100%',height:'auto',verticalAlign:'middle'}} src={image} />
       <div className="description">
         <p style={{marginBottom:"0px"}}>
-         {productName}
+         {Name}
         </p>
         <p style={{marginBottom:"0px"}}>{style}</p>
         <p> <b>Price</b>: PKR {price}</p>

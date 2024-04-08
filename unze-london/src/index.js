@@ -30,19 +30,12 @@ import Ordercancel from './routes/ordercancel';
 import Returnpolicy from './routes/returnpolicy';
 import Orderstatuscheck from './routes/orderstatuscheck';
 import Returnsupport from './routes/returnsupport';
-import Wishlistpage from './routes/wishlistpage';
 import Admin from './routes/admin'; 
 
 // pages (includes)
 import Cart from "./pages/cart/cart";
-import Wishlist from "./pages/wishlist/wishlist";
 import ManageProducts from "./pages/manageproducts/manageproducts"  ;
-import Womenstable from "./pages/womenstable/womenstable";
-import Menstable from "./pages/menstable/menstable";
-import Kidstable from "./pages/kidstable/kidstable";
-import Womenatable from "./pages/womenatable/womenatable";
-import Menatable from "./pages/menatable/menatable";
-import Kidatable from "./pages/kidatable/kidatable";
+
 
 // collections
 import Womenshoes from './collections/womenshoes';
@@ -61,18 +54,7 @@ const router=createBrowserRouter([
     errorElement:<ErrorPage />,
 children:[
     {index:true,element: <Index />},
-    {path:"kidatable",
-    element: <Kidatable />
-   },
-    {path:"menatable",
-    element: <Menatable />
-   },
-    {path:"womenatable",
-    element: <Womenatable />
-   },
-    {path:"kidstable",
-    element: <Kidstable />
-   },
+  
     {path:"login",
     element: <Loginpage />
    },
@@ -124,17 +106,11 @@ element: <Orderstatuscheck />
 {path:"returnsupport",
 element: <Returnsupport />
 },
-{path:"wishlistpage",
-element: <Wishlistpage />
-},
 {path:"womenshoes",
 element: <Womenshoes />
 },
 {path:"cart",
 element: <Cart />
-},
-{path:"wishlist",
-element: <Wishlist />
 },
 {path:"menshoes",
 element: <Menshoes />
@@ -156,12 +132,6 @@ element: <Admin />
 },
 {path:"manageproducts",
 element: <ManageProducts />
-},
-{path:"womenstable",
-element: <Womenstable />
-},
-{path:"menstable",
-element: <Menstable />
 },
   ],
   },

@@ -199,38 +199,6 @@ const authenticator=useContext(AutheticationContext);
 </li>
 
 <hr></hr>
-            <li className="nav-item">
-              <Link to={'/wishlistpage/'}> <div  style={{
-                      position: 'relative',
-                      display: 'inline-block',
-                      marginLeft: '10px',
-                    }} >
-                    <FontAwesomeIcon
-                      icon={faHeart}
-                      color="black"
-                      
-                      size="lg"
-                      className="thin-icon"
-                    />
-
-                    
-                       <span
-                       className="badge  bg-dark  cart-total-item"
-                       style={{
-                         position: 'absolute',
-                         top: '-5px',
-                         right: '-5px',
-                         borderRadius: '50%',
-                         fontSize: '10px', // Adjust font size
-                         padding: '4px 6px', // Adjust padding
-                       }}
-                     >
-                       0
-                     </span>
-                   
-                  </div></Link>
-            </li><hr></hr>
-
 <li className="nav-item" style={{marginLeft:'15px'}}>
       <button style={{border:'none',backgroundColor:"#f8f9fa"}} className="toggle-btn" onClick={toggleSidebar}>
         

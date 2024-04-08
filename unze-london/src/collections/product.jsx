@@ -3,11 +3,8 @@ import { ShopContext } from "../context/shop-context";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-export const Product = (props) => {
-  const { id,Name,price,image,style } = props.data;
-  const { addToCart, cartItems, addToWish } = useContext(ShopContext);
-
-  const cartItemCount = cartItems[id];
+function Product ({product,onAddToCart})  {
+  const { id,Name,price,image,style } = product;
 
   return (
     <div className="product">
@@ -18,11 +15,11 @@ export const Product = (props) => {
         </p>
         <p style={{marginBottom:"0px"}}>{style}</p>
         <p> PKR {price}</p>
-        <button style={{marginBottom:'10px'}} className="addToCartBttn" onClick={() => addToCart(id)}>
-        Add To Cart {cartItemCount > 0 && <> ({cartItemCount})</>}
+        <button style={{marginBottom:'10px'}} className="addToCartBttn" onClick={() => onAddToCart(product)}>
+        Add To Cart
       </button>
       <br></br>
-      <a onClick={() => addToWish(id) }>
+      <a>
        {/* icon */}
    <FontAwesomeIcon
                       icon={faHeart}
@@ -39,3 +36,4 @@ export const Product = (props) => {
     </div>
   );
 };
+export default Product;

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import Footer from '../components/Footer';
 import { db } from "../../src/firebase";
-import { Product } from "./product";
+import  Product  from "./product";
 import { addDoc, collection, getDocs, deleteDoc, doc, updateDoc, query, where } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { ShopCss } from '../components/styles/ShopCss';
-
+import { ShopContext } from '../context/shop-context';
 export default function MenApparel() {
 
   const [products, setProducts] = useState([]);
@@ -18,9 +18,10 @@ export default function MenApparel() {
     };
     getData();
   }, []);
-
-  const menApparel = products.filter(item => item.category === 'Men apparels');
-  return (
+const menApparel = products.filter(item => item.category === 'Men apparels');
+  //context 
+  const {addToCart,onAddToCart,cart}=useContext(ShopContext)
+return (
     <div>  <center>
     <h3 style={{backgroundColor:'black', 
                 color:'white',
@@ -32,8 +33,8 @@ export default function MenApparel() {
   <ShopCss>
   <div className="shop">
       <div className="products">
-        {menApparel.map((product) => (
-          <Product data={product} />
+        {menApparel.map((item) => (
+               <Product product={item} onAddToCart={addToCart}/>
         ))}
       </div>
     </div>
