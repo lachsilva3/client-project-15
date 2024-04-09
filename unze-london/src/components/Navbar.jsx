@@ -1,31 +1,32 @@
 import React, { useState ,useContext} from 'react';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faTruck } from '@fortawesome/free-solid-svg-icons';
 import { faUndo } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Outlet,NavLink, Link } from 'react-router-dom'
+
+// images
 import backgroundImage from '../assets/logo.png';
-
-
 import pak from '../assets/pak.png'
 import uk from '../assets/uk.png'
 import us from '../assets/us.png'
 import germeny from '../assets/germeny.png'
 import france from '../assets/france.png'
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+//components
 import SideBar from './SideBar';
 import { LeftSideBarCss } from './styles/LeftSideBarCss';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
 import { AutheticationContext } from '../context/AutheticationContext'
+import { ShopContext } from '../context/shop-context';
 
 
 function Navbar() {
@@ -44,9 +45,9 @@ const [currentPage, setCurrentPage] = useState('page1');
 const handleButtonClick = (page) => {
   setCurrentPage(page);
 };
-// test
+// context
 const authenticator=useContext(AutheticationContext);
-
+const {count}=useContext(ShopContext);
 
 
   return <div>
@@ -225,7 +226,7 @@ const authenticator=useContext(AutheticationContext);
                           padding: '4px 6px', // Adjust padding
                         }}
                       >
-                        0
+                        {count}
                       </span>
                     
                   </div>

@@ -4,13 +4,16 @@ null
 );
 
 export const ShopContextProvider = (props) => {
-  // add to cart
+// add to cart
   const [cart, setCart] = useState([]);
+  const [count, setCount] = useState(0);
   const addToCart = (product) => {
+    setCount(count + 1);
     setCart([...cart, product]);
   };
     // remove from cart
     const removeFromCart = (index) => {
+      setCount(count-1);
       const updatedCart = [...cart];
       updatedCart.splice(index, 1);
       setCart(updatedCart);
@@ -21,6 +24,7 @@ export const ShopContextProvider = (props) => {
     addToCart,
     removeFromCart,
     cart,
+    count,
   };
 
   return (
