@@ -5,7 +5,7 @@ import { ShopContext } from '../context/shop-context';
 
 
 const SideBar = ({ isOpen, onClose }) => {
-    const {cart,removeFromCart}=useContext(ShopContext)
+    const {cart,removeFromCart,count}=useContext(ShopContext)
   return (
     <RightSideBarCss>
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
@@ -17,6 +17,7 @@ const SideBar = ({ isOpen, onClose }) => {
                         
                         </button>
                         </div>
+                        <h6 style={{color:'red',textAlign:'center'}}>Total items : {count}</h6>
                         <Cart cart={cart} onRemoveFromCart={removeFromCart} />
     </div>
     </RightSideBarCss>
