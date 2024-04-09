@@ -1,7 +1,5 @@
 import React, { useContext,useState } from "react";
-import { ShopContext } from "../context/shop-context";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 
 function Product ({product,onAddToCart})  {
   const { id,Name,price,image,style } = product;

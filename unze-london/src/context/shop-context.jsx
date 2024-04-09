@@ -1,13 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { addDoc, collection, getDocs, deleteDoc, doc, updateDoc, query, where } from "firebase/firestore";
-import { db } from "../../src/firebase";
 export const ShopContext = createContext(
 null
 );
-
-
-
-
 
 export const ShopContextProvider = (props) => {
   // add to cart
@@ -15,10 +9,17 @@ export const ShopContextProvider = (props) => {
   const addToCart = (product) => {
     setCart([...cart, product]);
   };
-    
+    // remove from cart
+    const removeFromCart = (index) => {
+      const updatedCart = [...cart];
+      updatedCart.splice(index, 1);
+      setCart(updatedCart);
+    };
+
 
   const contextValue = {
     addToCart,
+    removeFromCart,
     cart,
   };
 

@@ -33,13 +33,13 @@ const RightSideBarCss =styled.div`
 }
 
 .sidebar {
-  width: 300px;
+  width: 400px;
   overflow: scroll;
   height: 100%;
   background-color: white;
   position: fixed;
   top: 0;
-  right: -300px;
+  right: -400px;
   transition: right 0.3s;
   z-index: 1;
 }
@@ -54,6 +54,8 @@ const RightSideBarCss =styled.div`
   cursor: pointer;
   color: white;
   padding: 10px;
+  margin-left: 100px;
+
 }
 .title{
    padding: 15px;

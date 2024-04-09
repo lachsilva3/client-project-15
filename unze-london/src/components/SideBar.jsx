@@ -5,19 +5,19 @@ import { ShopContext } from '../context/shop-context';
 
 
 const SideBar = ({ isOpen, onClose }) => {
-    const {cart}=useContext(ShopContext)
+    const {cart,removeFromCart}=useContext(ShopContext)
   return (
     <RightSideBarCss>
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
      <div className='title'>
       <h6 ><b>Shopping Cart</b></h6>
-      <button style={{color:"black",fontWeight:'bolder',
+      <button style={{color:"black",fontFamily:"sans-serif"
                              }} className="close-btn" onClick={onClose}>
                         X
                         
                         </button>
                         </div>
-                        <Cart cart={cart} />
+                        <Cart cart={cart} onRemoveFromCart={removeFromCart} />
     </div>
     </RightSideBarCss>
   );
