@@ -35,7 +35,7 @@ function Cart({ cart }) {
               alt={item.Name}
             />
             <blockquote style={{ textAlign: "center" }}>
-              <p>{item.Name}</p>
+              <p style={{fontSize:'20px'}}>{item.Name}</p>
               <p>{item.style}</p>
               <p>PKR-{item.price}</p>
               <div className="countHandler">
