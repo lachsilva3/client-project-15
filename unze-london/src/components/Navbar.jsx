@@ -63,7 +63,7 @@ const {count}=useContext(ShopContext);
   {/* test */}
  <div>
   <div style={{textAlign:'center'}}>
-      <button className='leftsidebarbutton' onClick={() => handleButtonClick('page1')}>WOMEN</button>
+      <button className='leftsidebarbutton'  onClick={() => handleButtonClick('page1')} >WOMEN</button>
       <button className='leftsidebarbutton' onClick={() => handleButtonClick('page2')}>MEN</button>
       <button className='leftsidebarbutton' onClick={() => handleButtonClick('page3')}>KIDS</button>
       </div>
@@ -91,12 +91,12 @@ const {count}=useContext(ShopContext);
     </h2>
     <div id="collapseOne"  aria-labelledby="headingOne">
       <div >
-      <ul className="accordionlist" >
-               <li><a className="item" href="pak"><img src={pak} alt="pakistan"/> Unze Pakistan</a></li><hr></hr>
-               <li><a className="item" href="uk"><img src={uk} alt="uk"/> Unze UK</a></li><hr></hr>
-               <li><a className="item" href="us"><img src={us} alt="us"/> Unze US</a></li><hr></hr>
-               <li><a className="item" href="ger"><img src={germeny} alt="germeny"/> Unze Germeny</a></li><hr></hr>
-               <li><a className="item" href="fra"><img src={france} alt="france"/> Unze France</a></li>
+      <ul className="accordionlist"  >
+               <li><a className="item" href="pak" style={{textDecoration:'none',color:'black'}} ><img src={pak} alt="pakistan"/> Unze Pakistan</a></li><hr></hr>
+               <li><a className="item" href="uk" style={{textDecoration:'none',color:'black'}} ><img src={uk} alt="uk"/> Unze UK</a></li><hr></hr>
+               <li><a className="item" href="us" style={{textDecoration:'none',color:'black'}} ><img src={us} alt="us"/> Unze US</a></li><hr></hr>
+               <li><a className="item" href="ger" style={{textDecoration:'none',color:'black'}} ><img src={germeny} alt="germeny"/> Unze Germeny</a></li><hr></hr>
+               <li><a className="item" href="fra" style={{textDecoration:'none',color:'black'}} ><img src={france} alt="france"/> Unze France</a></li>
                </ul>
                </div>
     </div>
@@ -133,12 +133,13 @@ const {count}=useContext(ShopContext);
       <button className="btn hamburger" data-bs-toggle="offcanvas" href="#offcanvasExample"aria-controls="offcanvasExample">
        <FontAwesomeIcon icon={faBars} size="2x"/>
 </button>
-      
+<NavLink  to={`/`} className={({isActive})=>
+        isActive? "cus-nav-link" : "nav-link"} >
         <img src={backgroundImage} alt="Background" 
     style={{display:'block',backgroundRepeat:'no-repeat',
             width:'140px', marginLeft:'50px'
             }} />
-       
+       </NavLink>
       
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -167,12 +168,7 @@ const {count}=useContext(ShopContext);
             </li><hr></hr>
 
 
-            <li className="nav-item">
-            <NavLink  to={`/`} className={({isActive})=>
-        isActive? "cus-nav-link" : "nav-link"} >
-            Home
-        </NavLink>
-            </li><hr></hr>
+           
             <li className="nav-item">
             <NavLink  to={`/trackorder/`} className={({isActive})=>
         isActive? "cus-nav-link" : "nav-link"} >

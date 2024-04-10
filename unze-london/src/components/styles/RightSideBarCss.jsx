@@ -36,7 +36,8 @@ const RightSideBarCss =styled.div`
   width: 400px;
   overflow: scroll;
   height: 100%;
-  background-color: white;
+  background-color: #f8f4f4;
+  border-left: 1px solid grey;
   position: fixed;
   top: 0;
   right: -400px;
