@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState,useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { ShopContext } from '../../context/shop-context';
 
-function Cart({ cart,onRemoveFromCart }) {
+function Cart({ cart,onRemoveFromCart}) {
+    //context 
+    const {subtotal}=useContext(ShopContext)
   return (
     <div>
       <ul>
@@ -23,8 +26,9 @@ function Cart({ cart,onRemoveFromCart }) {
           </a>
           </li>
         ))}
-       
       </ul>
+      <hr></hr>
+      <center>Total:- <span style={{color:'red'}}> PKR {subtotal} </span></center>
     </div>
   );
 }

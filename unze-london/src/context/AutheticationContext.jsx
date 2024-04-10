@@ -1,5 +1,4 @@
 import { useState,createContext } from "react";
-import { useNavigate } from "react-router-dom";
 export const AutheticationContext= createContext({
     
     isAutheticated:false,
@@ -18,7 +17,7 @@ const Login=(email,password)=>{
 
 if(email !== "admin" || password !== "admin"){
     alert("Invalid details or Empty fields")
-  
+    
     return;
 }
 console.log("granted")

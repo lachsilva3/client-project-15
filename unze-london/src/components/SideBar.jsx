@@ -14,7 +14,7 @@ const SideBar = ({ isOpen, onClose }) => {
       <button style={{color:"black",fontFamily:"sans-serif"
                              }} className="close-btn" onClick={onClose}>
                         X
-                        
+                          
                         </button>
                         </div>
                         <h6 style={{color:'red',textAlign:'center'}}>Total items : {count}</h6>
