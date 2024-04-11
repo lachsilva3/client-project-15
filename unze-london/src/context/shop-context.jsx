@@ -6,8 +6,12 @@ export const ShopContextProvider = (props) => {
   const [cart, setCart] = useState([]);
   const [count, setCount] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
+ 
 
   const addToCart = (product) => {
+
+
+
     const isAlreadyInCart = cart.some((item) => item.id === product.id);
 
     if (!isAlreadyInCart) {

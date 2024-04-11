@@ -1,15 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { ShopContext } from "../../context/shop-context";
+import {NavLink } from 'react-router-dom'
 
 function Cart({ cart }) {
-  const { removeFromCart, subtotal, updateCartItemCount } = useContext(
-    ShopContext
-  );
+  const { removeFromCart, subtotal, updateCartItemCount,addToCart,
+  } = useContext(ShopContext);
+  
+ 
 
   return (
     <div>
+    
       <ul>
         {cart.map((item, index) => (
           <li
@@ -35,7 +38,7 @@ function Cart({ cart }) {
               alt={item.Name}
             />
             <blockquote style={{ textAlign: "center" }}>
-              <p>{item.Name}</p>
+              <p style={{fontSize:'20px'}}>{item.Name}</p>
               <p>{item.style}</p>
               <p>PKR-{item.price}</p>
               <div className="countHandler">
@@ -62,12 +65,17 @@ function Cart({ cart }) {
               <FontAwesomeIcon icon={faTrashCan} style={{  float: "right", marginTop:'-36px', marginRight:'30px' }} />
             </a>
           </li>
+        
         ))}
       </ul>
       <hr />
       <center>
-        Total: <span style={{ color: "red" }}> PKR {subtotal} </span>
+        Total: <span style={{ color: "red" }}> PKR {subtotal} </span><br></br>
+        <NavLink  to={`/checkout/`} className='btn btn-dark custom-btn' >
+            Checkout
+        </NavLink>
       </center>
+      
     </div>
   );
 }

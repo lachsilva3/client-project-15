@@ -31,7 +31,7 @@ import Returnpolicy from './routes/returnpolicy';
 import Orderstatuscheck from './routes/orderstatuscheck';
 import Returnsupport from './routes/returnsupport';
 import Admin from './routes/admin'; 
-
+import Checkout from './routes/checkout'; 
 // pages (includes)
 import Cart from "./pages/cart/cart";
 import ManageProducts from "./pages/manageproducts/manageproducts"  ;
@@ -132,6 +132,9 @@ element: <Admin />
 },
 {path:"manageproducts",
 element: <ManageProducts />
+},
+{path:"checkout",
+element: <Checkout />
 },
   ],
   },
