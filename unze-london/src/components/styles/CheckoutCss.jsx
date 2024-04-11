@@ -24,11 +24,14 @@ const CheckoutCss =styled.div`
 }
 
 .left {
-  background-color: lightblue;
+  background-color: white;
+  border-top: 1px solid grey;
 }
 
 .right {
-  background-color: lightcoral;
+  border-top: 1px solid grey;
+  border-left: 1px solid gray;
+  background-color:rgb(250, 250, 250);
 }
 
 @media (max-width: 768px) {

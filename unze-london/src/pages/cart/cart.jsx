@@ -5,7 +5,7 @@ import { ShopContext } from "../../context/shop-context";
 import {NavLink } from 'react-router-dom'
 
 function Cart({ cart }) {
-  const { removeFromCart, subtotal, updateCartItemCount,addToCart,
+  const { removeFromCart, subtotal, updateCartItemCount,
   } = useContext(ShopContext);
   
  

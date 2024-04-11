@@ -1,75 +1,82 @@
-import React, { useRef,useEffect,useState, useContext } from 'react'
-// Context
-import { AutheticationContext } from '../../context/AutheticationContext'
-import Button from "./Button"
-import FormGroup from "./FormGroup"
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { LoginFormCss } from '../styles/LoginFormCss';
-
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
 export default function LoginForm() {
-
-// references
-const emailRef= useRef();
-
-useEffect(()=>{
-    emailRef.current.focus();
-},[]);
-
-// CONTEXT
-
-const authenticator=useContext(AutheticationContext);
-
-
-// Authetication
-const[auth,setAuth]=useState({
-    email:"",
-    password:"",
-});
-
-const handleInputChange=(e)=>{
-const{name,value}=e.target;
-setAuth({...auth,[name]:value })
-}
-const navigate = useNavigate();
-    const handleLogin=(e)=>{
-     
-        e.preventDefault();
-        //context
-
-        authenticator.Login(auth.email,auth.password)
-
-        clearForm();
-        navigate('/');
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
+    const { email, password } = formData;
+    const navigate = useNavigate();
+    
+    function onChange(e) {
+        setFormData(prevState => ({
+           ...prevState,
+            [e.target.id]: e.target.value,
+        }));
     }
-    // clear the form after entering details
-    function clearForm(){
-        setAuth({
-            email:"",
-            password:"",
-        })
+    async function onSubmit(e) {
+        e.preventDefault()
+        try {
+            const auth = getAuth();
+            const userCredential = await signInWithEmailAndPassword(auth, email, password)
+            if (userCredential.user) { 
+                navigate('/')
+            }
+            
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
+    async function handleLogin(e) {
+        e.preventDefault();
+    
+        try {
+            const auth = getAuth();
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            
+            // User successfully authenticated
+            if (userCredential.user) {
+                navigate('/');
+            }
+        } catch (error) {
+            console.error("Error logging in:", error.message);
+            // Handle login errors (e.g., display error message to user)
+            if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+                // Display alert message for invalid credentials
+                alert("Invalid email or password. Please try again.");
+            } else {
+                // Display generic error message for other errors
+                alert("Invalid email or password! Please Enter the right credentials");
+            }
+        }
     }
   return (
     <LoginFormCss >
-  <div className='login-container '>
+  <div className='login-container'>
+     <form className='login-form' onSubmit={onSubmit}>
 
-     <form className='login-form'>
-        <FormGroup label={"Email"}
-                    type={"email"} 
-                    name={"email"}
-                    placeholder={"Enter your email"}
-                    referece={emailRef}
-                    value={auth.email}
-                    onChange={handleInputChange}
+     <label>Email:</label>
+        <input style={{padding:'10px' ,border:'0.5px solid grey',borderRadius:'6px'}}
+            type={"email"} 
+            id='email'
+            placeholder='Email address'
+            value={email}
+            onChange={onChange}
         />
+   
 <br />
-        <FormGroup label={"Password"}
-                    type={"password"} 
-                    name={"password"}
-                    placeholder={"Enter your password"}
-                    value={auth.password}
-                    onChange={handleInputChange}
+<label>Password:</label>
+        <input style={{padding:'10px',border:'0.5px solid grey',borderRadius:'6px'}}
+            type={"password"} 
+            id="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={onChange}
         /><br />
         <button type='button' className='btn btn-primary'
             onClick={handleLogin} 
@@ -82,5 +89,5 @@ const navigate = useNavigate();
      </form>
     </div>
     </LoginFormCss>
-  )
+  )
 }

@@ -9,9 +9,6 @@ export const ShopContextProvider = (props) => {
  
 
   const addToCart = (product) => {
-
-
-
     const isAlreadyInCart = cart.some((item) => item.id === product.id);
 
     if (!isAlreadyInCart) {

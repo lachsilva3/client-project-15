@@ -1,80 +1,115 @@
 import React, { useState } from 'react';
 import { LoginFormCss } from '../styles/LoginFormCss';
-import { Outlet,NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const RegistrationForm = () => {
-  const [firstname, setFirstName] = useState('');
-  const [lastname, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
 
-  const handleRegistration = () => {
-    // Add your login logic here, such as making an API request to authenticate the user
-    if (firstname === 'example1' && 
-        lastname === 'test' && 
-        email === 'example@email.com' && 
-        password === 'password123') {
-      // Successful login
-      alert('Login successful!');
-    } else {
-      // Failed login
-      setErrorMessage('Invalid email or password');
-    }
+  const { name, email, password } = formData;
+
+  const onChange = (e) => {
+    setFormData(prevState => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
   };
+
+  const handleRegistration = async (e) => {
+    e.preventDefault();
+
+    try {
+        const auth = getAuth();
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Define user data from form
+        const userData = {
+            name: name,
+            email: email,
+        };
+
+        // Access Firestore instance
+        const db = getFirestore();
+
+        // Add user data to Firestore
+        await addDoc(collection(db, "users"), userData);
+
+        // Clear form after successful registration
+        setFormData({
+            name: '',
+            email: '',
+            password: ''
+        });
+
+        // Display alert for successful registration
+        alert("User created successfully! You can Login Now");
+
+    } catch (error) {
+        // Check if the error is due to email already in use
+        if (error.code === "auth/email-already-in-use") {
+            console.error("Error registering user:", error.message);
+            // You can inform the user that the email is already in use
+            // and provide options like logging in with that email or using a different one
+            // For example:
+            alert("Email address is already in use. Please try logging in or use a different email address.");
+        } else {
+            // Handle other errors
+            console.error("Error registering user:", error.message);
+        }
+    }
+};
+
+  
 
   return (
     <LoginFormCss>
-    <div className="login-container">
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <form className="login-form">
-      <div className="form-group">
-          <label>First Name:</label>
-          <input
-            type="text"
-            value={firstname}
-            onChange={(e) => setFirstName(e.target.value)}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label>Last Name:</label>
-          <input
-            type="text"
-            value={lastname}
-            onChange={(e) => setLastName(e.target.value)}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-control"
-          />
-        </div>
-        <button type="button" onClick={handleRegistration} className="btn btn-primary">
-          <b>REGISTER</b>
-        </button>
+      <div className="login-container">
+        <form className="login-form" onSubmit={handleRegistration}>
+          <div className="form-group">
+            <label>Full Name:</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={onChange}
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={onChange}
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={onChange}
+              className="form-control"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            <b>REGISTER</b>
+          </button>
+        </form>
         <br></br>
-      </form>
-      <NavLink  to={`/login/`} className={({isActive})=>
-        isActive? "nav-link" : "nav-link"} >
-         <h6 style={{textAlign:'center'}}><b>ALREADY HAVE AN ACCOUNT? LOGIN HERE</b>  </h6>
+        <NavLink to={`/login/`} className={({ isActive }) => isActive ? "nav-link" : "nav-link"} >
+          <h6 style={{ textAlign: 'center' }}><b>ALREADY HAVE AN ACCOUNT? LOGIN HERE</b>  </h6>
         </NavLink>
-    </div>
+      </div>
     </LoginFormCss>
   );
 };
