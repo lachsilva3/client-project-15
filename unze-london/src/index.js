@@ -6,6 +6,7 @@ import './App.css';
 
 // Context
 import { ShopContextProvider } from './context/shop-context';
+import { AuthProvider } from './context/AutheticationContext';
 // Routing
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 
@@ -143,7 +144,7 @@ element: <Checkout />
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
-
+<AuthProvider>
   <React.StrictMode>
    <ShopContextProvider>
 
@@ -151,7 +152,7 @@ root.render(
  
     </ShopContextProvider>
   </React.StrictMode>
-
+  </AuthProvider>
 
 );
 

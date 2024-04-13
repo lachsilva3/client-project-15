@@ -1,10 +1,16 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { LoginFormCss } from '../styles/LoginFormCss';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from '../../context/AutheticationContext';
 
 
 export default function LoginForm() {
+//test
+const {login}=useContext(AuthContext);
+
+// end
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -33,20 +39,25 @@ export default function LoginForm() {
     }
 
     async function handleLogin(e) {
-        e.preventDefault();
     
+        e.preventDefault();
+  
         try {
             const auth = getAuth();
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            
+          
             
             // User successfully authenticated
 
             if (userCredential.user) {
                 navigate('/');
+                login();
             }
+            
+              
         } catch (error) {
             console.error("Error logging in:", error.message);
+            
             // Handle login errors (e.g., display error message to user)
             if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
                 // Display alert message for invalid credentials
@@ -55,7 +66,9 @@ export default function LoginForm() {
                 // Display generic error message for other errors
                 alert("Invalid email or password! Please Enter the right credentials");
             }
+            
         }
+     
     }
   return (
     <LoginFormCss >

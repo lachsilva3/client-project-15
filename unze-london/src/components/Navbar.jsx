@@ -25,7 +25,9 @@ import { LeftSideBarCss } from './styles/LeftSideBarCss';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
-import { AuthContext } from '../context/AutheticationContext'
+
+// context
+import { AuthContext } from '../context/AutheticationContext';
 import { ShopContext } from '../context/shop-context';
 
 
@@ -46,7 +48,7 @@ const handleButtonClick = (page) => {
   setCurrentPage(page);
 };
 // context
-
+const { isLoggedIn, logout } = useContext(AuthContext);
 const {count}=useContext(ShopContext);
 
 
@@ -149,39 +151,33 @@ const {count}=useContext(ShopContext);
     
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 h5 " style={{marginRight:'10px'}}>
            
-            <li className="nav-item">
-        {/* {authenticator.isAutheticated && <NavLink  to={`/admin/`} 
-        className={({isActive})=>
-    isActive? "cus-nav-link " : "nav-link"} >
-        Admin
-    </NavLink>} */}
-
-            </li><hr></hr>
-            {/* <li className="nav-item">
-            {authenticator.isAutheticated &&  <NavLink to={`/login/`} 
-         className={({isActive})=>
-        isActive? "nav-link" : "nav-link"} 
-        onClick={authenticator.logout} >
-           Logout
-        </NavLink>}
-
-            </li> */}
-            <hr></hr>
-
-
+     <hr></hr>
            
             <li className="nav-item">
             <NavLink  to={`/trackorder/`} className={({isActive})=>
         isActive? "cus-nav-link" : "nav-link"} >
             Track Order
         </NavLink>
-            </li><hr></hr>
-            <li className="nav-item">
-            <NavLink  to={`/login/`} className={({isActive})=>
-        isActive? "cus-nav-link" : "nav-link"} >
-            Login
-        </NavLink>
-            </li><hr></hr>
+            </li>
+            <hr></hr>
+
+            {isLoggedIn ? (
+          <li className="nav-item">
+            <NavLink to={`/login/`} onClick={logout}
+            className='nav-link'
+            >Logout</NavLink>
+            </li>
+        ) : (
+          <li className="nav-item">
+            <NavLink to={`/login/`} className={({isActive})=>
+        isActive? "cus-nav-link" : "nav-link"}>Login</NavLink>
+            
+            </li>
+        )}
+
+
+            
+            <hr></hr>
           
             <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
