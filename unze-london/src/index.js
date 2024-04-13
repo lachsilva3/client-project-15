@@ -44,7 +44,7 @@ import Kidshoes from './collections/kidshoes';
 import Womenapparel from './collections/womenapparel';
 import Menapparel from './collections/menapparel';
 import Kidapparel from './collections/kidapparel';
-import AutheticationProvider from './context/AutheticationContext';
+
 
 
 const router=createBrowserRouter([  
@@ -143,7 +143,7 @@ element: <Checkout />
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
-<AutheticationProvider>
+
   <React.StrictMode>
    <ShopContextProvider>
 
@@ -151,7 +151,7 @@ root.render(
  
     </ShopContextProvider>
   </React.StrictMode>
-  </AutheticationProvider>
+
 
 );
 

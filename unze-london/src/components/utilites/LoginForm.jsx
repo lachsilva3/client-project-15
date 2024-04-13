@@ -39,7 +39,9 @@ export default function LoginForm() {
             const auth = getAuth();
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             
+            
             // User successfully authenticated
+
             if (userCredential.user) {
                 navigate('/');
             }

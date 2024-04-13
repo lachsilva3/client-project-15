@@ -25,7 +25,7 @@ import { LeftSideBarCss } from './styles/LeftSideBarCss';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
-import { AutheticationContext } from '../context/AutheticationContext'
+import { AuthContext } from '../context/AutheticationContext'
 import { ShopContext } from '../context/shop-context';
 
 
@@ -46,7 +46,7 @@ const handleButtonClick = (page) => {
   setCurrentPage(page);
 };
 // context
-const authenticator=useContext(AutheticationContext);
+
 const {count}=useContext(ShopContext);
 
 
@@ -150,14 +150,14 @@ const {count}=useContext(ShopContext);
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 h5 " style={{marginRight:'10px'}}>
            
             <li className="nav-item">
-        {authenticator.isAutheticated && <NavLink  to={`/admin/`} 
+        {/* {authenticator.isAutheticated && <NavLink  to={`/admin/`} 
         className={({isActive})=>
     isActive? "cus-nav-link " : "nav-link"} >
         Admin
-    </NavLink>}
+    </NavLink>} */}
 
             </li><hr></hr>
-            <li className="nav-item">
+            {/* <li className="nav-item">
             {authenticator.isAutheticated &&  <NavLink to={`/login/`} 
          className={({isActive})=>
         isActive? "nav-link" : "nav-link"} 
@@ -165,7 +165,8 @@ const {count}=useContext(ShopContext);
            Logout
         </NavLink>}
 
-            </li><hr></hr>
+            </li> */}
+            <hr></hr>
 
 
            

@@ -1,40 +1,23 @@
-import { useState,createContext } from "react";
-export const AutheticationContext= createContext({
-    
-    isAutheticated:false,
-    Login:()=>{},
-    logout:()=>{},
-})
+import React, { createContext, useState } from 'react';
 
-export default function AutheticationProvider({children}){
-   
-const [isAutheticated,setIsAutheticated]=useState(false);
+export const AuthContext = createContext();
 
+export const AuthProvider = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-// login  
+  const login = () => {
+    // Perform login logic, set isLoggedIn to true
+    setIsLoggedIn(true);
+  };
 
-const Login=(email,password)=>{
+  const logout = () => {
+    // Perform logout logic, set isLoggedIn to false
+    setIsLoggedIn(false);
+  };
 
-if(email !== "admin" || password !== "admin"){
-    alert("Invalid details or Empty fields")
-    
-    return;
-}
-console.log("granted")
-setIsAutheticated(true);
-}
-// logout
-const logout=()=>{
-    console.log("Logout")
-    setIsAutheticated(false);
-}
-
-    return(
-    <AutheticationContext.Provider value={{isAutheticated,
-    Login,logout} }>
-
-        {children}
-
-    </AutheticationContext.Provider>
-    )
-}
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
