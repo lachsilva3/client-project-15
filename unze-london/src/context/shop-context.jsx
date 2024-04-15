@@ -10,12 +10,13 @@ export const ShopContextProvider = (props) => {
 
   const addToCart = (product) => {
     const isAlreadyInCart = cart.some((item) => item.id === product.id);
-
+  
     if (!isAlreadyInCart) {
+      const newItem = { ...product, quantity: 1, totalPrice: Number(product.price) }; // Initialize totalPrice
       setCount(count + 1);
       setSubtotal(subtotal + Number(product.price));
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
+      setCart([...cart, newItem]);
+    }
   };
 
   const removeFromCart = (productId) => {
