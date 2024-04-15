@@ -35,6 +35,7 @@ import Returnsupport from './routes/returnsupport';
 import Admin from './routes/admin'; 
 import Checkout from './routes/checkout'; 
 import Profile from './routes/profile';
+import OrderNumber from './routes/OrderNumber';
 
 // pages (includes)
 import Cart from "./pages/cart/cart";
@@ -146,6 +147,9 @@ element: <Profile />
 },
 {path:"app",
 element: <App />
+},
+{path:"OrderNumber",
+element: <OrderNumber />
 },
   ],
   },

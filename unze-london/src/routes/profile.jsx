@@ -1,16 +1,16 @@
 import React from 'react';
 
-const ProfilePage = ({ email,onLogout }) => {
+const Profile = ({ email, onLogout }) => {
   return (
     <div>
-        
-          <div>
-      
-      <h1>Email: {email}</h1>
-      <button onClick={onLogout}>Logout</button>
-    </div>
+      {email && ( // Render only if email is truthy (i.e., user is logged in)
+        <div>
+          <h1>Welcome, {email}</h1>
+          <button onClick={onLogout}>Logout</button>
+        </div>
+      )}
     </div>
   );
 };
 
-export default ProfilePage;
+export default Profile;

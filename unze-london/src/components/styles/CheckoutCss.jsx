@@ -34,6 +34,8 @@ const CheckoutCss =styled.div`
   background-color:rgb(250, 250, 250);
 }
 
+
+
 @media (max-width: 768px) {
   .cus1-container {
     flex-direction: column-reverse; /* Reverses the order of the flex items on mobile */

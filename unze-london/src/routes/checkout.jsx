@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { CheckoutCss } from '../components/styles/CheckoutCss';
 import { ShopContext } from '../context/shop-context';
 import Checkoutcart from "../components/Checkoutcart";
+import { Link } from 'react-router-dom';
 
 export default function Checkout() {
   const {subtotal,cart} = useContext(ShopContext);
@@ -45,7 +46,7 @@ const handleSubmit = (e) => {
             <h3 style={{float:'left'}}>Contact</h3>
            
             <a href="/login" style={{float:'right', marginRight:'10px'}}>Log in</a><br/><br/>
-            <input type="text" id="login" name="login" style={{width:'93%', height:'50px', borderRadius:'5px'}} placeholder="Email or mobile phone number" value={formData.login} onChange={handleChange} />
+            <input type="text" id="login" name="login" style={{width:'93%', height:'50px', borderRadius:'5px'}}  placeholder="Email or mobile phone number *" value={formData.login} onChange={handleChange}required  />
             <br/>
             <label><input type="checkbox" name="email_news_offers" checked={formData.email_news_offers} onChange={handleChange} /> Email me with news and offers</label>
               <br/><br/>
@@ -58,23 +59,23 @@ const handleSubmit = (e) => {
             <input type="text" id="company" name="company" style={{width:'93%', height:'50px', borderRadius:'5px'}} placeholder="Company (optional)" value={formData.company} onChange={handleChange} />
             <br/> <br/>
             
-            <input type="text" id="address" name="address" style={{width:'93%', height:'50px', borderRadius:'5px'}} placeholder="Address" value={formData.address} onChange={handleChange} />
+            <input type="text" id="address" name="address" style={{width:'93%', height:'50px', borderRadius:'5px'}} placeholder="Address *" value={formData.address} onChange={handleChange} />
             <br/> <br/>
             
-            <input type="text" id="city" name="city" style={{width:'30%', height:'50px', borderRadius:'5px'}} placeholder="City" value={formData.city} onChange={handleChange} />
+            <input type="text" id="city" name="city" style={{width:'30%', height:'50px', borderRadius:'5px'}} placeholder="City *" value={formData.city} onChange={handleChange} />
             
             
             <select id="state" name="state" style={{width:'30%', height:'50px', borderRadius:'5px',  marginLeft:'10px'}}   value={formData.state} onChange={handleChange}>
-                <option value="St">state</option>
+                <option value="St">state *</option>
                 <option value="up">Uttar Pradesh</option>
                 <option value="del">Delhi</option>
             </select>
             
             
-            <input type="text" id="pin_code" name="pin_code" style={{width:'30%', height:'50px', borderRadius:'5px',  marginLeft:'10px'}} placeholder="Pin Code" value={formData.pin_code} onChange={handleChange} />
+            <input type="text" id="pin_code" name="pin_code" style={{width:'30%', height:'50px', borderRadius:'5px',  marginLeft:'10px'}} placeholder="Pin Code *" value={formData.pin_code} onChange={handleChange} />
             <br/> <br/>
             
-            <input type="tel" id="phone" name="phone" style={{width:'93%', height:'50px', borderRadius:'5px'}} placeholder="Phone Number" value={formData.phone} onChange={handleChange} />
+            <input type="tel" id="phone" name="phone" style={{width:'93%', height:'50px', borderRadius:'5px'}} placeholder="Phone Number *" value={formData.phone} onChange={handleChange} />
             <br/> <br/>
             <label><input type="checkbox" name="save_info" checked={formData.save_info} onChange={handleChange} /> Save this information for next time</label>
             <br/> <br/>
@@ -99,8 +100,9 @@ const handleSubmit = (e) => {
            <br/> <br/>
             <label><input type="radio" name="billing_address" value="different" checked={formData.billing_address === 'different'} onChange={handleChange} /> Use a different billing address</label>
             <br/> <br/>
-            <button type="submit" style={{width:'93%', height:'50px', borderRadius:'5px', background:'green', color:'white'}}>Complete Order</button>
-            </form></div>
+            <Link to="/OrderNumber">
+              <button type="submit" style={{width:'93%', height:'50px', borderRadius:'5px', background:'green', color:'white'}}>Complete Order</button>
+            </Link></form></div>
 
         {/* right side */}
         <div className="right" >
