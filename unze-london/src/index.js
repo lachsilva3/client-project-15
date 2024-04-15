@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
 import './index.css';
 import './App.css';
-
+import './App';
 
 // Context
 import { ShopContextProvider } from './context/shop-context';
@@ -33,6 +34,8 @@ import Orderstatuscheck from './routes/orderstatuscheck';
 import Returnsupport from './routes/returnsupport';
 import Admin from './routes/admin'; 
 import Checkout from './routes/checkout'; 
+import Profile from './routes/profile';
+
 // pages (includes)
 import Cart from "./pages/cart/cart";
 import ManageProducts from "./pages/manageproducts/manageproducts"  ;
@@ -45,6 +48,7 @@ import Kidshoes from './collections/kidshoes';
 import Womenapparel from './collections/womenapparel';
 import Menapparel from './collections/menapparel';
 import Kidapparel from './collections/kidapparel';
+import App from './App';
 
 
 
@@ -136,6 +140,12 @@ element: <ManageProducts />
 },
 {path:"checkout",
 element: <Checkout />
+},
+{path:"profile",
+element: <Profile />
+},
+{path:"app",
+element: <App />
 },
   ],
   },

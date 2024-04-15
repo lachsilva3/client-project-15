@@ -5,27 +5,18 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../context/AutheticationContext';
 
 
-export default function LoginForm() {
-//test
+const LoginForm=({ onLogin })=> {
+
 const {login}=useContext(AuthContext);
-
-// end
-
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-    });
-    const { email, password } = formData;
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+ 
     const navigate = useNavigate();
     
-    function onChange(e) {
-        setFormData(prevState => ({
-           ...prevState,
-            [e.target.id]: e.target.value,
-        }));
-    }
     async function onSubmit(e) {
         e.preventDefault()
+
+
         try {
             const auth = getAuth();
             const userCredential = await signInWithEmailAndPassword(auth, email, password)
@@ -36,6 +27,9 @@ const {login}=useContext(AuthContext);
         } catch (error) {
             alert(error.message)
         }
+        //test
+     
+        
     }
 
     async function handleLogin(e) {
@@ -50,8 +44,9 @@ const {login}=useContext(AuthContext);
             // User successfully authenticated
 
             if (userCredential.user) {
-                navigate('/');
+                navigate('/login/');
                 login();
+                onLogin(email);
             }
             
               
@@ -68,6 +63,13 @@ const {login}=useContext(AuthContext);
             }
             
         }
+        if (email.trim() === '' || password.trim() === '') {
+            alert('Please enter email and password');
+            return;
+          }
+        
+        
+//end
      
     }
   return (
@@ -81,7 +83,7 @@ const {login}=useContext(AuthContext);
             id='email'
             placeholder='Email address'
             value={email}
-            onChange={onChange}
+            onChange={(e) => setEmail(e.target.value)}
         />
    
 <br />
@@ -91,7 +93,7 @@ const {login}=useContext(AuthContext);
             id="password"
             placeholder="Enter your password"
             value={password}
-            onChange={onChange}
+            onChange={(e) => setPassword(e.target.value)}
         /><br />
         <button type='button' className='btn btn-primary'
             onClick={handleLogin} 
@@ -106,3 +108,4 @@ const {login}=useContext(AuthContext);
     </LoginFormCss>
   )
 }
+export default LoginForm;

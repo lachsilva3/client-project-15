@@ -161,19 +161,14 @@ const {count}=useContext(ShopContext);
             </li>
             <hr></hr>
 
-            {isLoggedIn ? (
-          <li className="nav-item">
-            <NavLink to={`/login/`} onClick={logout}
-            className='nav-link'
-            >Logout</NavLink>
-            </li>
-        ) : (
+          
+    
           <li className="nav-item">
             <NavLink to={`/login/`} className={({isActive})=>
         isActive? "cus-nav-link" : "nav-link"}>Login</NavLink>
             
             </li>
-        )}
+    
 
 
             

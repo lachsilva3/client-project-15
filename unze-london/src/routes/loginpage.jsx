@@ -1,38 +1,46 @@
 import React, { useState } from 'react';
 import LoginForm from '../components/utilites/LoginForm';
+import Profile from '../routes/profile';
 import Footer from '../components/Footer';
 
 
 const App = () => {
-  const [token, setToken] = useState(null);
+  
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [email, setEmail] = useState('');
 
-  const handleLogin = (token) => {
-    setToken(token);
+  const handleLogin = (userEmail) => {
+    setEmail(userEmail);
+    setLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setEmail('');
+    setLoggedIn(false);
   };
 
   return (
     <div>
-      {token ? (
-        <div>
-         
-          {/* Authenticated content */}
-          <button onClick={() => setToken(null)}>Logout</button>
-        </div>
-      ) : (
-        <div>
-        <center>
+          <center>
           <h3 style={{backgroundColor:'black', 
                       color:'white',
                       padding:30,
                       }}
-                      >My Account</h3>
+                      >MY ACCOUNT</h3>
           </center> 
+        <div>
           <br></br><br></br>
-          <LoginForm onLogin={handleLogin} />
+          <div>
+      {loggedIn ? (
+        <Profile email={email} onLogout={handleLogout} />
+      ) : (
+        <LoginForm onLogin={handleLogin} />
+      )}
+    </div>
           <br></br>
           <Footer />
         </div>
-      )}
+  
     </div>
   );
 };
