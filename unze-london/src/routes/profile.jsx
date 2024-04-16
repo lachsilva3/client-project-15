@@ -5,8 +5,15 @@ const Profile = ({ email, onLogout }) => {
     <div>
       {email && ( // Render only if email is truthy (i.e., user is logged in)
         <div>
-          <h1>Welcome, {email}</h1>
-          <button onClick={onLogout}>Logout</button>
+          <center>
+          <h3>Email:- {email}</h3>
+          <button style={{backgroundColor:'black',
+
+
+        }} className='btn btn-dark' onClick={onLogout}>
+            <b>Logout</b>
+            </button>
+          </center>
         </div>
       )}
     </div>
