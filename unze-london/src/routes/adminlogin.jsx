@@ -1,8 +1,8 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { LoginFormCss } from '../styles/LoginFormCss';
+import { LoginFormCss } from '../components/styles/LoginFormCss';
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from '../../context/AutheticationContext';
+import { AuthContext } from '../context/AutheticationContext';
 
 
 const LoginForm=({ onLogin })=> {
@@ -77,7 +77,7 @@ const [password, setPassword] = useState('');
   <div className='login-container'>
      <form className='login-form' onSubmit={onSubmit}>
 
-     <label>Email:</label>
+     <label style={{color:'red'}}>Admin Email:</label>
         <input style={{padding:'10px' ,border:'0.5px solid grey',borderRadius:'6px'}}
             type={"email"} 
             id='email'
@@ -87,7 +87,7 @@ const [password, setPassword] = useState('');
         />
    
 <br />
-<label>Password:</label>
+<label style={{color:'red'}}>Admin Password:</label>
         <input style={{padding:'10px',border:'0.5px solid grey',borderRadius:'6px'}}
             type={"password"} 
             id="password"
@@ -99,14 +99,7 @@ const [password, setPassword] = useState('');
             onClick={handleLogin} 
         ><b>SIGN IN</b></button>
         <br></br>
-        <p style={{textAlign:'center'}}>New To UNZE?</p>
-        <button type='button' className='btn btn-primary'
-            onClick={() => navigate("/register/")}
-        ><b>CREATE ACCOUNT</b></button>
-<br></br>
-        <a style={{textAlign:'center'}}
-        onClick={()=>navigate('/adminlogin/')}
-        >Admin</a>
+    
      </form>
     </div>
     </LoginFormCss>

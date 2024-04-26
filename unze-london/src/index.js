@@ -36,6 +36,7 @@ import Admin from './routes/admin';
 import Checkout from './routes/checkout'; 
 import Profile from './routes/profile';
 import OrderNumber from './routes/OrderNumber';
+import AdminLogin from './routes/adminlogin'
 
 // pages (includes)
 import Cart from "./pages/cart/cart";
@@ -150,6 +151,9 @@ element: <App />
 },
 {path:"OrderNumber",
 element: <OrderNumber />
+},
+{path:"adminlogin",
+element: <AdminLogin />
 },
   ],
   },
