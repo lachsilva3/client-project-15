@@ -99,7 +99,11 @@ const [password, setPassword] = useState('');
             onClick={handleLogin} 
         ><b>SIGN IN</b></button>
         <br></br>
-    
+    <p>Temporary Registration (<b>have to remove after 3 accounts are registered</b>)</p>
+    <a 
+        onClick={()=>navigate('/adminregister/')}
+        >Admin Register</a>
+
      </form>
     </div>
     </LoginFormCss>
