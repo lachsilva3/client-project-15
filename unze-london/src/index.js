@@ -36,8 +36,6 @@ import Admin from './routes/admin';
 import Checkout from './routes/checkout'; 
 import Profile from './routes/profile';
 import OrderNumber from './routes/OrderNumber';
-import AdminLogin from './routes/adminlogin'
-import AdminRegister from './routes/adminregister';
 
 // pages (includes)
 import Cart from "./pages/cart/cart";
@@ -69,9 +67,7 @@ children:[
    {path:"register",
    element:<Registerpage /> 
   },
-  {path:"adminregister",
-    element: <AdminRegister />
-   },
+ 
     {path:"trackorder",
      element:<Trackorderpage />
     },
@@ -156,9 +152,7 @@ element: <App />
 {path:"OrderNumber",
 element: <OrderNumber />
 },
-{path:"adminlogin",
-element: <AdminLogin />
-},
+
   ],
   },
 ])

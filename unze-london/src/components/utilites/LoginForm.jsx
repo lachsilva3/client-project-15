@@ -16,7 +16,6 @@ const [password, setPassword] = useState('');
     async function onSubmit(e) {
         e.preventDefault()
 
-
         try {
             const auth = getAuth();
             const userCredential = await signInWithEmailAndPassword(auth, email, password)
@@ -27,15 +26,16 @@ const [password, setPassword] = useState('');
         } catch (error) {
             alert(error.message)
         }
-        //test
+     
      
         
+ 
     }
-
     async function handleLogin(e) {
     
         e.preventDefault();
   
+
         try {
             const auth = getAuth();
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -44,9 +44,15 @@ const [password, setPassword] = useState('');
             // User successfully authenticated
 
             if (userCredential.user) {
+
+                if (email === 'admin123@gmail.com' && password === 'admin123'){
+                    navigate('/admin/')
+                }
+        else{
                 navigate('/login/');
                 login();
                 onLogin(email);
+            }
             }
             
               
@@ -71,7 +77,8 @@ const [password, setPassword] = useState('');
         
 //end
      
-    }
+   
+}
   return (
     <LoginFormCss >
   <div className='login-container'>
@@ -104,9 +111,7 @@ const [password, setPassword] = useState('');
             onClick={() => navigate("/register/")}
         ><b>CREATE ACCOUNT</b></button>
 <br></br>
-        <a style={{textAlign:'center'}}
-        onClick={()=>navigate('/adminlogin/')}
-        >Admin</a>
+      
      </form>
     </div>
     </LoginFormCss>
